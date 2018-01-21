@@ -84,6 +84,9 @@ class FG_eval {
 
     // The rest of the constraints
     for (int t = 1; t < N; t++) {
+
+      std::cout << "FG Eval operator: update step " << t << std::endl;
+
       AD<double> x1 = vars[x_start + t];
       AD<double> y1 = vars[y_start + t];
       AD<double> psi1 = vars[psi_start + t];
