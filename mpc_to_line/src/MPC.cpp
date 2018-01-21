@@ -56,6 +56,8 @@ class FG_eval {
     // Any additions to the cost should be added to `fg[0]`.
     fg[0] = 0;
 
+    std::cout << "start FG Eval operator" << std::endl;
+
     // Reference State Cost
     // TODO: Define the cost related the reference state and
     // any anything you think may be beneficial.
