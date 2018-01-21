@@ -117,8 +117,8 @@ class FG_eval {
       fg[1 + y_start + t] = y1 - (y0 + v0 * CppAD::sin(psi0) * dt);
       fg[1 + psi_start + t] = psi1 - (psi0 + (v0/Lf) * delta0 * dt);
       fg[1 + v_start + t] = v1 - (v0 + a0 * dt);
-      fg[1 + cte_start + t] = cte1 - (y0 - polyeval(coeffs, x0) + v0*CppAD::sin(epsi0)*dt);
-      fg[1 + epsi_start + t] = eps1 - (epsi0 - CppAD::arctan(coeffs[1]) + (v0/Lf)*delta0*dt);
+      fg[1 + cte_start + t] = cte1 - (y0 - (coeffs[0] + coeffs[1]*x0) + v0*CppAD::sin(epsi0)*dt);
+      fg[1 + epsi_start + t] = epsi1 - (epsi0 - CppAD::atan(coeffs[1]) + (v0/Lf)*delta0*dt);
     }
   }
 };
@@ -298,7 +298,7 @@ int main() {
   // TODO: calculate the cross track error
   double cte = y - polyeval(coeffs, x);
   // TODO: calculate the orientation error
-  double epsi = psi - arctan(coeffs[1]);
+  double epsi = psi - atan(coeffs[1]);
 
   Eigen::VectorXd state(6);
   state << x, y, psi, v, cte, epsi;
