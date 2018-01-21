@@ -100,9 +100,9 @@ class FG_eval {
       AD<double> delta0 = vars[delta_start + t - 1];
       AD<double> a0 = vars[a_start + t - 1];
 
-      fg[0] += CppAD::pow(vars[cte1], 2);
-      fg[0] += CppAD::pow(vars[epsi1], 2);
-      fg[0] += CppAD::pow(vars[v1] - 35, 2);
+      fg[0] += CppAD::pow(cte1, 2);
+      fg[0] += CppAD::pow(epsi1, 2);
+      fg[0] += CppAD::pow(v1 - 35, 2);
       fg[0] += CppAD::pow(delta1 - delta0, 2);
 
       // Here's `x` to get you started.
