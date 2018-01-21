@@ -56,8 +56,6 @@ class FG_eval {
     // Any additions to the cost should be added to `fg[0]`.
     fg[0] = 0;
 
-    std::cout << "start FG Eval operator" << std::endl;
-
     // Reference State Cost
     // TODO: Define the cost related the reference state and
     // any anything you think may be beneficial.
@@ -121,8 +119,6 @@ class FG_eval {
       fg[1 + v_start + t] = v1 - (v0 + a0 * dt);
       fg[1 + cte_start + t] = cte1 - (y0 - (coeffs[0] + coeffs[1]*x0) + v0*CppAD::sin(epsi0)*dt);
       fg[1 + epsi_start + t] = epsi1 - (epsi0 - CppAD::atan(coeffs[1]) + (v0/Lf)*delta0*dt);
-
-      std::cout << "FG Eval operator: update step " << t << std::endl;
     }
   }
 };
